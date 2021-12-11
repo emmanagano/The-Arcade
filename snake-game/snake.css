@@ -24,9 +24,6 @@ body {
     line-height: 4.5rem;
 
 }
-.header-container p{
-    font-size: 1rem;
-}
 .ul-container {
     list-style: none;
     display: flex;
@@ -46,39 +43,27 @@ body {
     background-color: black;
     color: white;
 }
-.section-wrapper {
+.main-container {
     display: flex;
-    justify-content: space-around;
-    align-items: center;
-    flex-wrap: wrap;
-}
-.section-wrapper section {
-    margin: 1rem;
-    padding: 1rem;
-    height: 400px;
-    width: 400px;
-    display: flex;
-    flex-wrap: wrap;
     justify-content: center;
-    /* temporary */
-    border: #302b63 solid 2px;
-    background-color: black;
-    border-radius: 10px;
-    box-shadow: 10px 5px 5px #24243e;
+    align-items: center;
 }
-.section-wrapper h3 {
-    width: 100%;
-    margin: 0.5rem;
-    text-align: center;
-    font-size: 1.5rem;
-
+#board {
+    height: 80vmin;
+    width: 80vmin;
+    background-color: #663399;
+    display: grid;
+    grid-template-rows: repeat(20,1fr);
+    grid-template-columns: repeat(20,1fr);
 }
-.section-wrapper section:hover{
+.snake {
     background-color: white;
-    color: black;
-    text-shadow: none;
+    border: .25vmin solid black;
 }
-.section-wrapper img {
-    width: 300px;
-    height: 300px;
+.food {
+    background-color: turquoise;
+    border: .25vmin solid black;
+}
+footer {
+    height: 3rem;
 }
