@@ -1,0 +1,34 @@
+* {
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-image: linear-gradient(to right, #0f0c29,#302b63,#24243e);
+
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#board {
+    height: 600px;
+    width: 600px;
+    background-color: #663399;
+    margin: 3rem;
+    display: grid;
+    grid-template-columns: repeat(20, 1fr);
+    grid-template-rows: repeat(20, 1fr);
+}
+
+.snake {
+    background-color: hotpink;
+}
+
+.food {
+
+}
