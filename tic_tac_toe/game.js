@@ -1,7 +1,8 @@
 
 let playerTurn = document.querySelector("#switch-text");
 let turnSwitch = document.querySelector("#player-turn");
-const button = document.querySelector("#restart-button");
+const resetButton = document.querySelector("#restart-button");
+const startButton = document.querySelector("#start-button");
 const grid = document.querySelector(".grid-container");
 let gridCells = Array.from(document.querySelectorAll(".cell"));
 
@@ -32,37 +33,40 @@ const winningCombo = [
     [2,4,6]
 ];
 
-gridCells.forEach( (cell) => {
-    let cellIndex = gridCells.indexOf(cell);
-    cell.addEventListener("click", function startGame(){
-        if(inputArray.length % 2 === 1){
-            cell.textContent = "X";
-            turnSwitch.textContent = "O";
-            inputArray.push(cellIndex);
-            cell.removeEventListener("click",startGame);
-        } else if(inputArray.length % 2 === 0){
-            cell.textContent = "O";
-            turnSwitch.textContent = "X";
-            inputArray.push(cellIndex);
-            cell.removeEventListener("click",startGame);
-        };
-        
-       if(cell.textContent === "X"){
-           arrayX.push(cellIndex);
-           console.log(arrayX);
-           if(arrayX.length === 3){
-               compareWinner();
+let gameActive = true;
+
+startButton.addEventListener("click", function main(){
+    gridCells.forEach( (cell) => {
+        let cellIndex = gridCells.indexOf(cell);
+        cell.addEventListener("click", function startGame(){
+            if(inputArray.length % 2 === 1){
+                cell.textContent = "X";
+                turnSwitch.textContent = "O";
+                inputArray.push(cellIndex);
+                cell.removeEventListener("click",startGame);
+            } else if(inputArray.length % 2 === 0){
+                cell.textContent = "O";
+                turnSwitch.textContent = "X";
+                inputArray.push(cellIndex);
+                cell.removeEventListener("click",startGame);
+            };
+            
+           if(cell.textContent === "X"){
+               arrayX.push(cellIndex);
+               if(arrayX.length === 3){
+                   compareWinner();
+               };
+           } else if(cell.textContent === "O"){
+               arrayO.push(cellIndex);
+               if(arrayO.length === 3){
+                    compareWinner();
+               };
            };
-       } else if(cell.textContent === "O"){
-           arrayO.push(cellIndex);
-           console.log(arrayO);
-           if(arrayO.length === 3){
-                compareWinner();
+           if(inputArray.length === 9){
+                return playerTurn.textContent = "Tie";
            };
-       };
-       
+        });
     });
-    
 });
 
 function compareWinner(){
@@ -78,6 +82,7 @@ function compareWinner(){
     };
 };
 
-function gameOver(){
-    
+function gameOver(over){
+    over = true;
 };
+
