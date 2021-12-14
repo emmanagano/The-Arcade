@@ -1,16 +1,12 @@
 
-//const playerTurn = document.querySelector(".turn-container");
+let playerTurn = document.querySelector("#switch-text");
 let turnSwitch = document.querySelector("#player-turn");
 const button = document.querySelector("#restart-button");
 const grid = document.querySelector(".grid-container");
-const gridCells = Array.from(document.querySelectorAll(".cell"));
-//console.log(gridCells);
+let gridCells = Array.from(document.querySelectorAll(".cell"));
 
 let board = ["","","","","","","","",""];
 
-const playerX = "Player X Won!";
-const playerO = "Player O Won!";
-const tie = "TIE";
 
 /*
 - coordinates visual:
@@ -20,6 +16,10 @@ const tie = "TIE";
 [6] [7] [8]
 
 */
+
+let inputArray = [];
+let arrayX = [];
+let arrayO = [];
 
 const winningCombo = [
     [0,1,2],
@@ -31,11 +31,6 @@ const winningCombo = [
     [0,4,8],
     [2,4,6]
 ];
-
-let inputArray = [];
-let arrayX = [];
-let arrayO = [];
-
 
 gridCells.forEach( (cell) => {
     let cellIndex = gridCells.indexOf(cell);
@@ -54,30 +49,38 @@ gridCells.forEach( (cell) => {
         
        if(cell.textContent === "X"){
            arrayX.push(cellIndex);
+           console.log(arrayX);
+           if(arrayX.length === 3){
+               compareWinner();
+           };
        } else if(cell.textContent === "O"){
            arrayO.push(cellIndex);
-       };
-       if(arrayX.length === 3){
-           compareWinner();
-       };
-       if(arrayO.length === 3){
-           compareWinner();
+           console.log(arrayO);
+           if(arrayO.length === 3){
+                compareWinner();
+           };
        };
        
     });
     
 });
 
-// let winner = [];
-
-// winningCombo.forEach(winningArray => {
-//     winner = winningArray;
-// });
-
-
-
 function compareWinner(){
-    winningCombo.forEach(winningArray => {
-        winner = winningArray;
-    });
+    for(let i = 0; i < winningCombo.length; i ++){
+        let winningOuter = winningCombo[i];
+        if(String(winningOuter) === String(arrayX)){
+            playerTurn.textContent = "Player X won!";
+            gameOver();
+        } else if(String(winningOuter) === String(arrayO)){
+            playerTurn.textContent = "Player O won!";
+            gameOver();
+        };
+    };
 };
+
+function gameOver(over){
+    over = true;
+    console.log(over === true);
+};
+
+//console.log(over === true);

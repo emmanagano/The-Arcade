@@ -29,6 +29,7 @@ body {
 .turn-container h2 {
     margin: 1rem;
     padding: 0.5rem;
+    font-size: 2rem;
 }
 .grid-section {
     margin: 2rem;

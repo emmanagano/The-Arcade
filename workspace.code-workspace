@@ -1,0 +1,11 @@
+{
+	"folders": [
+		{
+			"name": "the_arcade",
+			"path": "."
+		}
+	],
+	"settings": {
+		"liveServer.settings.port": 5501
+	}
+}
