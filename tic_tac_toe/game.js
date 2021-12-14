@@ -82,7 +82,7 @@ function compareWinner(){
     };
 };
 
-function gameOver(over){
-    over = true;
+function gameOver(){
+    return gameActive = false;
 };
 
