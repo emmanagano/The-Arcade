@@ -78,9 +78,6 @@ function compareWinner(){
     };
 };
 
-function gameOver(over){
-    over = true;
-    console.log(over === true);
+function gameOver(){
+    
 };
-
-//console.log(over === true);
