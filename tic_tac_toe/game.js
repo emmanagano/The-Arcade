@@ -29,12 +29,12 @@ const winningCombo = [
     [1,4,7],
     [2,5,8],
     [0,4,8],
-    [2,4,6]
+    [2,4,6],
 ];
 
 let gameIsActive = true;
-
-console.log(grid);
+// let winnerArrayX = [];
+// let winnerArrayO = [];
 
 gridCells.forEach(cell => {
     let cellIndex = gridCells.indexOf(cell);
@@ -59,6 +59,21 @@ gridCells.forEach(cell => {
     });
 });
 
+/*
+ massive bugs in your code:
+ - only few winning combinations are possible. 
+ - your checkWinner function is useless. 
+ - the event listener doesn't stop once a player won.
+ - pick whether you want the startButton or not.
+ - the board doesn't clear up
+    - either that or make sure the user can no longer click the board.
+ - if you get stuck at this for a long time, 
+    reconsider not making a vs. computer AI. Would be too times consuming
+    might not reach deadline
+ - you have no use of gameIsActive and board variables.
+
+
+*/
 
 function checkWinner(){ 
     if(arrayX.length === 3 || arrayO.length === 3){
