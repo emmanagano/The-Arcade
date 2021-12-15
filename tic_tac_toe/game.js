@@ -17,7 +17,6 @@ let board = ["","","","","","","","",""];
 
 */
 
-let cellIndex;
 let inputArray = [];
 let arrayX = [];
 let arrayO = [];
@@ -33,32 +32,33 @@ const winningCombo = [
     [2,4,6]
 ];
 
-startButton.addEventListener("click", main());
+let gameIsActive = true;
 
-function main(){
-    gridCells.forEach(cell => {
-        let cellIndex = gridCells.indexOf(cell);
-        cell.addEventListener("click", function startGame(){
-            inputArray.push(cell);
-            if(inputArray.length % 2 === 1){
-                cell.textContent = "X";
-                turnSwitch.textContent = "O";
-                arrayX.push(cellIndex);
-                cell.removeEventListener("click",startGame);
-                checkWinner();
-            }else if(inputArray.length % 2 === 0){
-                cell.textContent = "O";
-                turnSwitch.textContent = "X";
-                arrayO.push(cellIndex);
-                cell.removeEventListener("click",startGame);
-                checkWinner();
-            };
-            if(inputArray.length === 9){
-                playerTurn.textContent = "Draw";
-            };
-        });
+console.log(grid);
+
+gridCells.forEach(cell => {
+    let cellIndex = gridCells.indexOf(cell);
+    cell.addEventListener("click", function startGame(){
+        inputArray.push(cell);
+        if(inputArray.length % 2 === 1){
+            cell.textContent = "X";
+            turnSwitch.textContent = "O";
+            arrayX.push(cellIndex);
+            cell.removeEventListener("click",startGame);
+            checkWinner();
+        }else if(inputArray.length % 2 === 0){
+            cell.textContent = "O";
+            turnSwitch.textContent = "X";
+            arrayO.push(cellIndex);
+            cell.removeEventListener("click",startGame);
+            checkWinner();
+        };
+        if(inputArray.length === 9){
+            playerTurn.textContent = "Draw";
+        };
     });
-};
+});
+
 
 function checkWinner(){ 
     if(arrayX.length === 3 || arrayO.length === 3){
@@ -69,6 +69,7 @@ function checkWinner(){
             }else if(String(arrayO) === String(winningIndex)){
                 playerTurn.textContent = "Player O Won!";
             };
+
         };
     };
 };
