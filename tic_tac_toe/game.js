@@ -33,30 +33,31 @@ const winningCombo = [
 ];
 
 let gameIsActive = true;
-// let winnerArrayX = [];
-// let winnerArrayO = [];
+
 
 gridCells.forEach(cell => {
     let cellIndex = gridCells.indexOf(cell);
-    cell.addEventListener("click", function startGame(){
+    cell.addEventListener("click", function startGame(e){
+        e = e.target;
         inputArray.push(cell);
         if(inputArray.length % 2 === 1){
             cell.textContent = "X";
             turnSwitch.textContent = "O";
             arrayX.push(cellIndex);
             cell.removeEventListener("click",startGame);
-            checkWinner();
+            checkWinner(e);
         }else if(inputArray.length % 2 === 0){
             cell.textContent = "O";
             turnSwitch.textContent = "X";
             arrayO.push(cellIndex);
             cell.removeEventListener("click",startGame);
-            checkWinner();
+            checkWinner(e);
         };
         if(inputArray.length === 9){
             playerTurn.textContent = "Draw";
         };
     });
+
 });
 
 /*
@@ -75,23 +76,24 @@ gridCells.forEach(cell => {
 
 */
 
-function checkWinner(){ 
 
-    // if(arrayX.length === 3 || arrayO.length === 3){
-    //     for(let i = 0; i < winningCombo.length; i++){
-    //         let winningIndex = winningCombo[i];
-    //         if(String(arrayX) === String(winningIndex)){
-    //             playerTurn.textContent = "Player X Won!";
-    //         }else if(String(arrayO) === String(winningIndex)){
-    //             playerTurn.textContent = "Player O Won!";
-    //         };
+function checkWinner(e){ 
+    arrayX.sort((a,b) => a - b);
+    arrayO.sort((a,b) => a - b);
+    if(arrayX.length == 3 || arrayO.length === 3){
+        for(let winningArray of winningCombo){
+            if(String(arrayX) === String(winningArray)){
+                playerTurn.textContent = "Player X won!";
+            }else if(String(arrayO) === String(winningArray)){
+                playerTurn.textContent = "Player O won!"
+                e.stopPropagation();
+            };
+        };
 
-    //     };
-    // };
-
-    
-
+    };
 };
+
+//console.log(checkWinner(arrayX));
 
 
 resetButton.addEventListener("click", function(){
