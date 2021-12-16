@@ -76,17 +76,21 @@ gridCells.forEach(cell => {
 */
 
 function checkWinner(){ 
-    if(arrayX.length === 3 || arrayO.length === 3){
-        for(let i = 0; i < winningCombo.length; i++){
-            let winningIndex = winningCombo[i];
-            if(String(arrayX) === String(winningIndex)){
-                playerTurn.textContent = "Player X Won!";
-            }else if(String(arrayO) === String(winningIndex)){
-                playerTurn.textContent = "Player O Won!";
-            };
 
-        };
-    };
+    // if(arrayX.length === 3 || arrayO.length === 3){
+    //     for(let i = 0; i < winningCombo.length; i++){
+    //         let winningIndex = winningCombo[i];
+    //         if(String(arrayX) === String(winningIndex)){
+    //             playerTurn.textContent = "Player X Won!";
+    //         }else if(String(arrayO) === String(winningIndex)){
+    //             playerTurn.textContent = "Player O Won!";
+    //         };
+
+    //     };
+    // };
+
+    
+
 };
 
 
