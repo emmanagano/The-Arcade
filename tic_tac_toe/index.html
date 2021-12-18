@@ -10,12 +10,16 @@
 </head>
 <body>
     <main>
-        <section class="title-container">
-            <h1>Tic Tac Toe</h1>
-            <!-- <input type="text" id="user-x-name">
-            <h2>vs</h2>
-            <input type="text" id="user-o-name">
-            <button type="submit">Go!</button> -->
+        <section >
+            <form class="title-container">
+                <h1>Tic Tac Toe:</h1>
+                <h3 class="user-input" id="player-x"></h3>
+                <input type="text" id="user-x-name">
+                <h2>vs</h2>
+                <h3 class="user-input" id="player-o"></h3>
+                <input type="text" id="user-o-name">
+                <button type="button" id="go-button">Go!</button>
+            </form>
         </section>
         <section class="turn-container">
             <h2 id="switch-text">Player <span id="player-turn">X</span>'s turn</h2>
@@ -39,6 +43,7 @@
         <section class="reset-container">
             <!-- <button id="start-button" type="button">Start Game</button> -->
             <button id="restart-button">Restart</button>
+            <button><a href="">Solo</a></button>
         </section>
     </main>
 </body>
