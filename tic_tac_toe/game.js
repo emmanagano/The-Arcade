@@ -39,6 +39,9 @@ goButton.addEventListener("click",function getUser(){
         playerO.classList.add("user-input");
         playerO.textContent = `${userOValue}`;
     };
+    if(userXValue ==="" || userOValue === ""){
+        alert("Please enter your name");
+    };
 });
 
 
@@ -61,7 +64,7 @@ gridCells.forEach(cell => {
             cell.removeEventListener("click",startGame);
             playerX.classList.add("underline-name");
             playerO.classList.remove("underline-name");
-            checkWinner();
+            checkWinner(arrayO);
         };
         if(thereIsWinner === true){
             for(let cell of gridCells){
@@ -84,46 +87,27 @@ not be able to place our marks in an occupied space
 be told when a move causes a player to win, or to draw
 start the game over without having to reset the browser
 
-bugs: 
--   It won't announce the winner if there is more than 3 X's or O's
-    in the board
-- 
-
- 
 */
 
+//let playerData = [];
 
 function checkWinner(playerArray){ 
     arrayX.sort((a,b) => a - b);
     arrayO.sort((a,b) => a - b);
-    console.log("arrayX:",arrayX);
-    console.log("arrayO:",arrayO)
-    //if(arrayX.length == 3 || arrayO.length === 3){
-        for(let winningArray of winningCombo){
-            //console.log("winningArray:", winningArray);
-            for(let arrayNumber of playerArray){
-                for(let winningNumber of winningArray){
-                    if(playerArray.includes(winningArray)){
-                        console.log("hi");
-                    }
-                }
-            }
-            if(winningArray.includes(arrayX)){
-                playerTurn.textContent = "Player X won!";
-                thereIsWinner = true;
-                // console.log("stringwinningarray:",String(winningArray));
-                // console.log("stringarrayx:", String(arrayX));
-                // playerX.classList.add("announce-winner");
-                // playerO.classList.remove("underline-name");
-            }else if(String(winningArray) === String(arrayO)){
-                playerTurn.textContent = "Player O won!";
-                thereIsWinner = true;
-                // playerO.classList.add("announce-winner");
-                // playerX.classList.remove("underline-name");
-            };
-
+    //console.log("arrayO:",String(arrayO),"arrayX:",String(arrayX));
+    for(let winningArray of winningCombo){
+        //console.log("winningArray:", String(winningArray));
+        if(String(arrayX).includes(String(winningArray))){
+            playerTurn.textContent = "Player X won!";
+            playerX.classList.add("announce-winner");
+            playerO.classList.remove("underline-name");
+        }else if(String(arrayO).includes(String(winningArray))){
+            playerTurn.textContent = "Player O won!";
+            playerO.classList.add("announce-winner");
+            playerX.classList.remove("underline-name");
         };
-    //};
+    };
+    
 };
 
 
