@@ -39,7 +39,7 @@ goButton.addEventListener("click",function getUser(){
         playerO.classList.add("user-input");
         playerO.textContent = `${userOValue}`;
     };
-    if(userXValue ==="" || userOValue === ""){
+    if(userXValue === "" || userOValue === ""){
         alert("Please enter your name");
     };
 });
@@ -87,33 +87,113 @@ not be able to place our marks in an occupied space
 be told when a move causes a player to win, or to draw
 start the game over without having to reset the browser
 
+more than 4 O's and X's that works:
+
+arrayO: [1, 2, 4, 6] //124
+arrayX: [0, 3, 5, 7]
+
+arrayX: [0, 3, 4, 5]//345
+arrayO: [1, 7, 8]
+
+arrayX:[0, 3, 6, 7] //036
+
+pattern: 
+
+- as long as the three winningNumbers are next to each other, 
+    it will keep working. 
+- once they're separated it won't announce the winner.
+
+doesn't work:
+
+[0,(1),3,6] //036
+[0,(3),4,8] // 048
+[2,(3),4,6] //246
+[1,4,(5),7] //147
+
+
+
+
+
+
 */
 
-//let playerData = [];
+// let playerData = [];
+// let charX;
+// let charWin;
+// let char;
+// let pairs = [];
 
 function checkWinner(playerArray){ 
     arrayX.sort((a,b) => a - b);
     arrayO.sort((a,b) => a - b);
-    //console.log("arrayO:",String(arrayO),"arrayX:",String(arrayX));
-    for(let winningArray of winningCombo){
-        //console.log("winningArray:", String(winningArray));
-        if(String(arrayX).includes(String(winningArray))){
-            playerTurn.textContent = "Player X won!";
-            playerX.classList.add("announce-winner");
-            playerO.classList.remove("underline-name");
-        }else if(String(arrayO).includes(String(winningArray))){
-            playerTurn.textContent = "Player O won!";
-            playerO.classList.add("announce-winner");
-            playerX.classList.remove("underline-name");
-        };
-    };
-    
+    // // console.log(arrayX)
+    // // console.log(arrayO)
+    // for(let winningArray of winningCombo){
+    //     for(let winningNumber of winningArray){
+    //         for(let arrayNumber of playerArray){
+                
+
+    //         };
+        
+    //     //console.log(winningNumber)
+    //     };
+          
+        
+        
+        
+        
+    // };
+    arrayX.some(array => {
+        for(let i = 0; i < winningCombo.length; i++){
+            let winningArray = winningCombo[i];
+            let winningNumber = winningArray[i];
+            
+        }
+    })
 };
 
+/*
+Plan: 
+- compare winningNumber to arrayX/O
+- winningNumber output: every number of winningcombo, not an array
+- I want them in order of 3
 
 
 
-//console.log(checkWinner(arrayX));
+
+
+
+*/
+//  //console.log(arrayX)
+//     //console.log(arrayO)
+//     for(let winningArray of winningCombo){
+//         arrayX.sort((a,b) => a - b);
+//         arrayO.sort((a,b) => a - b);
+//         for(let winningNumber of winningArray){
+//             console.log(winningNumber)
+            
+//         }
+        
+        
+//         if(arrayX.includes(winningArray)){
+//             playerTurn.textContent = "Player X won!";
+//             playerX.classList.add("announce-winner");
+//             playerO.classList.remove("underline-name");
+//         }else if(String(arrayO).includes(String(winningArray))){
+//             playerTurn.textContent = "Player O won!";
+//             playerO.classList.add("announce-winner");
+//             playerX.classList.remove("underline-name");
+//         };
+//     };
+//     // if(arrayX.length >= 4){
+//     //     for(let winningArray of winningCombo){
+
+//     //     };
+//     // };
+    
+
+
+
 
 
 resetButton.addEventListener("click", function(){
