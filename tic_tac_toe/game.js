@@ -1,11 +1,13 @@
 
-let playerTurn = document.querySelector("#switch-text");
+let displayText = document.querySelector("#switch-text");
 let turnSwitch = document.querySelector("#player-turn");
-const resetButton = document.querySelector("#restart-button");
-const startButton = document.querySelector("#start-button");
 const grid = document.querySelector(".grid-container");
 let gridCells = Array.from(document.querySelectorAll(".cell"));
-let board = ["","","","","","","","",""];
+
+
+
+// Buttons
+const resetButton = document.querySelector("#restart-button");
 
 
 /*
@@ -17,9 +19,7 @@ let board = ["","","","","","","","",""];
 
 */
 
-let inputArray = [];
-let arrayX = [];
-let arrayO = [];
+// Global variables
 
 const winningCombo = [
     [0,1,2],
@@ -31,10 +31,13 @@ const winningCombo = [
     [0,4,8],
     [2,4,6],
 ];
-
+let inputArray = [];
+let arrayX = [];
+let arrayO = [];
 let gameIsActive = true;
-// let winnerArrayX = [];
-// let winnerArrayO = [];
+let board = ["","","","","","","","",""];
+
+
 
 gridCells.forEach(cell => {
     let cellIndex = gridCells.indexOf(cell);
@@ -54,41 +57,14 @@ gridCells.forEach(cell => {
             checkWinner();
         };
         if(inputArray.length === 9){
-            playerTurn.textContent = "Draw";
+            displayText.textContent = "Draw";
         };
     });
 });
 
-/*
- massive bugs in your code:
- - only few winning combinations are possible. 
- - your checkWinner function is useless. 
- - the event listener doesn't stop once a player won.
- - pick whether you want the startButton or not.
- - the board doesn't clear up
-    - either that or make sure the user can no longer click the board.
- - if you get stuck at this for a long time, 
-    reconsider not making a vs. computer AI. Would be too times consuming
-    might not reach deadline
- - you have no use of gameIsActive and board variables.
-
-
-*/
-
-function checkWinner(){ 
-    if(arrayX.length === 3 || arrayO.length === 3){
-        for(let i = 0; i < winningCombo.length; i++){
-            let winningIndex = winningCombo[i];
-            if(String(arrayX) === String(winningIndex)){
-                playerTurn.textContent = "Player X Won!";
-            }else if(String(arrayO) === String(winningIndex)){
-                playerTurn.textContent = "Player O Won!";
-            };
-
-        };
-    };
+function checkWinner(){
+    
 };
-
 
 resetButton.addEventListener("click", function(){
     window.location.reload();
