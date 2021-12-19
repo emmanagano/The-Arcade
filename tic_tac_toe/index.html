@@ -10,27 +10,34 @@
 </head>
 <body>
     <main>
-        <section class="title-container">
-            <h1>Tic Tac Toe</h1>
+        <section >
+            <form class="title-container">
+                <h1>Tic Tac Toe:</h1>
+                <h3 class="user-input" id="player-x"></h3>
+                <input type="text" id="user-x-name" placeholder="Player X">
+                <h2>vs</h2>
+                <h3 class="user-input" id="player-o"></h3>
+                <input type="text" id="user-o-name" placeholder="Player O">
+                <button type="button" id="go-button">Go!</button>
+            </form>
         </section>
         <section class="turn-container">
             <h2 id="switch-text">Player <span id="player-turn">X</span>'s turn</h2>
         </section>
         <section class="grid-section">
             <div class="grid-container">
-                <div data-cell-index = "0" class="cell"></div>
-                <div data-cell-index = "1" class="cell"></div>
-                <div data-cell-index = "2" class="cell"></div>
-                <div data-cell-index = "3" class="cell"></div>
-                <div data-cell-index = "4" class="cell"></div>
-                <div data-cell-index = "5" class="cell"></div>
-                <div data-cell-index = "6" class="cell"></div>
-                <div data-cell-index = "7" class="cell"></div>
-                <div data-cell-index = "8" class="cell"></div>
+                <div id="0" class="cell"></div>
+                <div id="1" class="cell"></div>
+                <div id="2" class="cell"></div>
+                <div id="3" class="cell"></div>
+                <div id="4" class="cell"></div>
+                <div id="5" class="cell"></div>
+                <div id="6" class="cell"></div>
+                <div id="7" class="cell"></div>
+                <div id="8" class="cell"></div>
             </div>
         </section>
         <section class="reset-container">
-            <!-- <button id="start-button" type="button">Start Game</button> -->
             <button id="restart-button">Restart</button>
         </section>
     </main>
